@@ -36,8 +36,8 @@ void configure_pins(void){
 	P3OUT |= BIT7;
 
 	//laser pin
-	//P1DIR |= BIT6;
-	//P1OUT &= ~BIT6;
+	P1DIR |= BIT7;
+	P1OUT &= ~BIT7;
 
 }
 
@@ -64,5 +64,5 @@ void stop_azi_motor(void){
 }
 
 void toggle_laser(void){
-	P1OUT ^= BIT6;
+	P1OUT ^= BIT7;
 }

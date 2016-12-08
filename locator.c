@@ -62,5 +62,45 @@ void calculate_azi_steps(location_data *info){
 	info->azi_steps = steps;
 }
 
+void gha_dec_atoi(location_data *info, uint8_t *string, uint8_t gha_or_dec){
+	double deg = 0;
+	double min = 0;
+	double data = 0;
+	//if value is negative
+	if(string[0] == '-'){
+		//3 characters for degrees
+		deg += (string[1] - 48)*100;
+		deg += (string[2] - 48)*10;
+		deg += (string[3] - 48);
+
+		//2 characters for minutes
+		min += (string[4] - 48)*10;
+		min += (string[5] - 48)*1;
+		min = min/60;
+		data = -1*(deg+min);
+	}
+	//if value is positive
+	else{
+		//3 characters for degrees
+		deg += (string[0] - 48) * 100;
+		deg += (string[1] - 48) * 10;
+		deg += (string[2] - 48);
+
+		//2 characters for minutes
+		min += (string[3] - 48) * 10;
+		min += (string[4] - 48) * 1;
+		min = min/60;
+		data = (deg + min);
+	}
+
+	if(gha_or_dec == 1){
+		info->gha_num = data;
+	}
+	else if(gha_or_dec == 0){
+		info->declination_num = data;
+	}
+
+}
+
 
 

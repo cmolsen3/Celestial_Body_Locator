@@ -195,6 +195,43 @@ void gps_lock_led(void){
 }
 
 void lat_long_atoi(gps_data *info, uint8_t *string, uint8_t len, uint8_t lat_long){
+	double deg = 0;
+	double min = 0;
+	double data = 0;
+	// the NMEA string is 4 characters if the left side of the decimal place is to the 10's position
+	if(len == 4){
+		deg += (string[0] - 48)*10;
+		deg += (string[1] - 48);
+
+		min +=(string[2]-48)*10;
+		min +=(string[3]-48)*1;
+		min = min/60;
+
+		data = deg+min;
+
+	}
+	// the NMEA string is 5 characters if the left side of the decimal place is to the 100's position
+	else if(len == 5){
+		deg += (string[0] - 48)*100;
+		deg += (string[1] - 48)*10;
+		deg += (string[2] - 48);
+
+		min += (string[3] - 48)*10;
+		min += (string[4] - 48)*1;
+		min = min/60;
+
+		data = deg+min;
+	}
+	if(lat_long == 1){
+		info->latitude_num = data;
+	}
+	else{
+		info->longitude_num = data;
+	}
+
+}
+
+/*void lat_long_atoi(gps_data *info, uint8_t *string, uint8_t len, uint8_t lat_long){
 	uint8_t value = 0;
 	// the NMEA string is 4 characters if the left side of the decimal place is to the 10's position
 	if(len == 4){
@@ -214,6 +251,5 @@ void lat_long_atoi(gps_data *info, uint8_t *string, uint8_t len, uint8_t lat_lon
 		info->longitude_num = value;
 	}
 
-}
-
+}*/
 

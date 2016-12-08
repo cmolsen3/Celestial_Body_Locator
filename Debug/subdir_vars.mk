@@ -11,6 +11,7 @@ C_SRCS += \
 ../locator.c \
 ../logger.c \
 ../main.c \
+../menu.c \
 ../motor.c \
 ../startup_msp432p401r_ccs.c \
 ../system_msp432p401r.c \
@@ -21,6 +22,7 @@ OBJS += \
 ./locator.obj \
 ./logger.obj \
 ./main.obj \
+./menu.obj \
 ./motor.obj \
 ./startup_msp432p401r_ccs.obj \
 ./system_msp432p401r.obj \
@@ -31,6 +33,7 @@ C_DEPS += \
 ./locator.d \
 ./logger.d \
 ./main.d \
+./menu.d \
 ./motor.d \
 ./startup_msp432p401r_ccs.d \
 ./system_msp432p401r.d \
@@ -41,6 +44,7 @@ C_DEPS__QUOTED += \
 "locator.d" \
 "logger.d" \
 "main.d" \
+"menu.d" \
 "motor.d" \
 "startup_msp432p401r_ccs.d" \
 "system_msp432p401r.d" \
@@ -51,6 +55,7 @@ OBJS__QUOTED += \
 "locator.obj" \
 "logger.obj" \
 "main.obj" \
+"menu.obj" \
 "motor.obj" \
 "startup_msp432p401r_ccs.obj" \
 "system_msp432p401r.obj" \
@@ -61,6 +66,7 @@ C_SRCS__QUOTED += \
 "../locator.c" \
 "../logger.c" \
 "../main.c" \
+"../menu.c" \
 "../motor.c" \
 "../startup_msp432p401r_ccs.c" \
 "../system_msp432p401r.c" \

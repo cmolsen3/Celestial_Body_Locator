@@ -13,11 +13,11 @@
 typedef struct gps_data_t{
 	uint8_t latitude[5];
 	uint8_t latitude_len;
-	uint8_t latitude_num; //holds number in degrees as opposed to ASCII string
+	double latitude_num; //holds number in degrees as opposed to ASCII string
 	uint8_t latitude_direction;
 	uint8_t longitude[5];
 	uint8_t longitude_len;
-	uint8_t longitude_num; //holds number in degrees as opposed to ASCII string
+	double longitude_num; //holds number in degrees as opposed to ASCII string
 	uint8_t longitude_direction;
 	uint8_t utc[6]; //UTC from $GPRMC is 6 chars long
 	uint8_t date[6];

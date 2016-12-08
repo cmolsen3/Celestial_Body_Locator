@@ -10,6 +10,7 @@
 #include <stdint.h>
 #include "logger.h"
 #include "uart.h"
+#include "locator.h"
 
 
 GPS_Err log_gps_lock(){
@@ -55,6 +56,39 @@ GPS_Err log_date(uint8_t *date, int len){
 	uint8_t message[7] = { 'D', 'a', 't', 'e', ':',' '};
 	uart_putchar_n(message, 6);
 	uart_putchar_n(date, len);
+	uart_putchar(CR);
+
+	return NO_ERROR;
+}
+
+GPS_Err log_movement(){
+	uint8_t message[12] = { 'L', 'o', 'c', 'a', 't','i','n','g','.','.','.'};
+	uart_putchar_n(message, 11);
+	uart_putchar(CR);
+	return NO_ERROR;
+}
+
+GPS_Err log_object_found(location_data *info){
+	uint8_t message[13] = { 'O', 'b', 'j', 'e', 'c','t',' ','F','o','u','n','d'};
+	uart_putchar_n(message, 12);
+
+	uart_putchar(CR);
+	return NO_ERROR;
+}
+
+GPS_Err log_gathered_gha(uint8_t *gha){
+	uint8_t message[14] = { 'G', 'H', 'A', ' ', 'R','e','c','e','i','v','e','d',':'};
+	uart_putchar_n(message, 13);
+	uart_putchar_n(gha, 6);
+	uart_putchar(CR);
+
+	return NO_ERROR;
+}
+
+GPS_Err log_gathered_dec(uint8_t *dec){
+	uint8_t message[22] = { 'D', 'e', 'c','l','i','n','a','t','i','o','n',' ','R','e','c','e','i','v','e','d',':'};
+	uart_putchar_n(message, 21);
+	uart_putchar_n(dec, 6);
 	uart_putchar(CR);
 
 	return NO_ERROR;

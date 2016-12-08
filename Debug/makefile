@@ -14,6 +14,7 @@ ORDERED_OBJS += \
 "./locator.obj" \
 "./logger.obj" \
 "./main.obj" \
+"./menu.obj" \
 "./motor.obj" \
 "./startup_msp432p401r_ccs.obj" \
 "./system_msp432p401r.obj" \
@@ -159,8 +160,8 @@ Motor_w_BT.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(EXE_OUTPUTS__QUOTED)$(BIN_OUTPUTS__QUOTED)
-	-$(RM) "gps.d" "locator.d" "logger.d" "main.d" "motor.d" "startup_msp432p401r_ccs.d" "system_msp432p401r.d" "uart.d" 
-	-$(RM) "gps.obj" "locator.obj" "logger.obj" "main.obj" "motor.obj" "startup_msp432p401r_ccs.obj" "system_msp432p401r.obj" "uart.obj" 
+	-$(RM) "gps.d" "locator.d" "logger.d" "main.d" "menu.d" "motor.d" "startup_msp432p401r_ccs.d" "system_msp432p401r.d" "uart.d" 
+	-$(RM) "gps.obj" "locator.obj" "logger.obj" "main.obj" "menu.obj" "motor.obj" "startup_msp432p401r_ccs.obj" "system_msp432p401r.obj" "uart.obj" 
 	-@echo 'Finished clean'
 	-@echo ' '
 
