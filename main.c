@@ -225,7 +225,7 @@ void TA0_0_IRQHandler(void) {
 		step_counter++;
 		//stop azimuth movement
 		if(step_counter == 2*location_info.azi_steps){
-			log_object_found();
+			log_object_found(&location_info);
 			stop_azi_motor();
 			step_counter = 0;
 			switch_to_azi = 0;

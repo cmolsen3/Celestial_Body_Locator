@@ -47,7 +47,11 @@ void calculate_azi(location_data *info, uint8_t latitude, uint8_t latitude_dir, 
 	else if(latitude_dir == 'S'){
 		azi = atan(-sin(lha)/(tan(dec_rad)*cos(-lat_rad)-sin(-lat_rad)*cos(lha)));
 	}
+
 	azi = azi * 180 / pi;
+	if(azi < 0){
+		azi = azi + 360;
+	}
 	info->azimuth = azi; //in degrees
 }
 
@@ -102,5 +106,35 @@ void gha_dec_atoi(location_data *info, uint8_t *string, uint8_t gha_or_dec){
 
 }
 
+void convert_alt(location_data *info){
+	double temp;
+	int i;
+	temp = info->altitude/100;
+	for(i = 0; i < 6; i++){
+		if(i == 3){
+			info->alt[i] = 0x2E;
+		}
+		else{
+		info->alt[i] = (uint8_t)temp;
+		temp = (temp - info->alt[i])*10;
+		info->alt[i] += 48;
+		}
+	}
+}
 
+void convert_azi(location_data *info){
+	double temp;
+	int i;
+	temp = info->azimuth/100.0;
+	for(i = 0; i < 6; i++){
+		if(i == 3){
+			info->azi[i] = 0x2E;
+		}
+		else{
+			info->azi[i] = (uint8_t)temp;
+			temp = (temp - info->azi[i])*10;
+			info->alt[i] += 48;
+		}
+	}
+}
 
