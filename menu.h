@@ -1,8 +1,6 @@
 /*
  * menu.h
  *
- *  Created on: Dec 7, 2016
- *      Author: Clint Olsen
  */
 
 #ifndef MENU_H_

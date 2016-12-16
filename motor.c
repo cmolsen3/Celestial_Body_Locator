@@ -1,8 +1,6 @@
 /*
  * motor.c
  *
- *  Created on: Dec 7, 2016
- *      Author: Clint Olsen
  */
 
 #include "motor.h"
@@ -10,7 +8,6 @@
 
 void configure_timer(void) {
 	TA0CCR0 = 3000;                    	  // Capture Compare Value
-	//TA0CCTL0 = TIMER_A_CCTLN_CCIE;        	 // TACCR0 interrupt enabled
 	// up mode, SMCLK, enable
 	TA0CTL = TIMER_A_CTL_MC__UP | TIMER_A_CTL_TASSEL_2 | TIMER_A_CTL_IE;
 	TA0R = 0;

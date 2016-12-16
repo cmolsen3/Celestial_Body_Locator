@@ -1,8 +1,6 @@
 /*
  * motor.h
  *
- *  Created on: Dec 7, 2016
- *      Author: Clint Olsen
  */
 
 #ifndef MOTOR_H_

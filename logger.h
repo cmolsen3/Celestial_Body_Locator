@@ -1,8 +1,6 @@
 /*
  * logger.h
  *
- *  Created on: Nov 24, 2016
- *      Author: Clint Olsen
  */
 
 #ifndef LOGGER_H_
@@ -19,10 +17,7 @@ GPS_Err log_longitude(uint8_t *longitude, uint8_t dir, int len);
 GPS_Err log_movement();
 GPS_Err log_object_found();
 GPS_Err log_gathered_gha(uint8_t *gha);
-GPS_Err log_gathered_declination(uint8_t *dec);
-
-
-
+GPS_Err log_gathered_dec(uint8_t *dec);
 
 
 #endif /* LOGGER_H_ */

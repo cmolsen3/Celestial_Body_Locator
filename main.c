@@ -1,6 +1,14 @@
-/* Author: Clint Olsen
- * 12-7-16
- * Test Program to test motors
+/* Authors: Clint Olsen, Josh Biggio, and Eric Daugherty
+ * Date: 12-7-16
+ * ECEN 2020: Applications of Embedded Systems
+ * Description: GPS based Celestial Object Locator
+ * Inputs:
+ * -GHA and Declination of the object via Bluetooth
+ * -NMEA strings from GP-20U7 GPS receiver
+ * Outputs:
+ * -Altitude and Azimuth motor rotation to point to object
+ * -Logging based on inputs and calculations.
+ * Status: Functional Operation for Demonstation
  */
 
 #include "msp.h"
@@ -12,7 +20,6 @@
 #include "menu.h"
 #include <stdint.h>
 #include <stdlib.h>
-#include <stdio.h>
 
 void EUSCIA0_IRQHandler(void);
 void EUSCIA2_IRQHandler(void);
@@ -50,15 +57,11 @@ void main(void)
 {
     WDTCTL = WDTPW | WDTHOLD;           // Stop watchdog timer
     configure_serial_port0();
-    //configure_pins();
-    //configure_serial_port2();
     gps_on = 1;
     while(1){
     	//NMEA string processing state
     	if(process_string == 1){
     		int i;
-    		//uart_putchar_n(NMEA_GPRMC_string,NMEA_count);
-    		//uart_putchar(13);
     		for(i = 0; i < NMEA_count; i++){
     			sort_gps_data(&current_info, NMEA_GPRMC_string[i]);
     		}
@@ -69,7 +72,6 @@ void main(void)
     		configure_serial_port2();
     		//turn on indicator led
     		gps_lock_led();
-    		//begin_calculations = 1;
     		gather_input = 1;
     		gather_gha = 1;
     	}
@@ -135,7 +137,6 @@ void EUSCIA0_IRQHandler(void){
 				UCA0IE &= ~EUSCI_A__RXIE; // Disable USCI_A0 RX interrupts
 				process_string = 1;
 			}
-			//process_string = 1;
 		}
 		else if(capture_string == 1){
 			if(NMEA_count == 4){
@@ -163,8 +164,7 @@ void EUSCIA0_IRQHandler(void){
 void EUSCIA2_IRQHandler(void){
 
 	uint8_t data;
-	//data = UCA2RXBUF; //reading this clears flag
-	//uart_putchar(data);
+
 	//recieve interrupts
 	if (UCA2IFG & UCRXIFG){
 		data = UCA2RXBUF; //reading this clears flag

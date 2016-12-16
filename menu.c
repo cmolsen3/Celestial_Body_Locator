@@ -1,8 +1,6 @@
 /*
  * menu.c
  *
- *  Created on: Dec 7, 2016
- *      Author: Clint Olsen
  */
 
 #include "menu.h"

@@ -1,8 +1,6 @@
 /*
  * locator.c
  *
- *  Created on: Dec 5, 2016
- *      Author: Clint Olsen
  */
 
 #include <math.h>

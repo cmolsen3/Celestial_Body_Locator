@@ -1,9 +1,8 @@
 /*
  * gps.c
  *
- *  Created on: Nov 16, 2016
- *      Author: Clint Olsen
  */
+
 #include "gps.h"
 #include "uart.h"
 #include "logger.h"
@@ -230,26 +229,4 @@ void lat_long_atoi(gps_data *info, uint8_t *string, uint8_t len, uint8_t lat_lon
 	}
 
 }
-
-/*void lat_long_atoi(gps_data *info, uint8_t *string, uint8_t len, uint8_t lat_long){
-	uint8_t value = 0;
-	// the NMEA string is 4 characters if the left side of the decimal place is to the 10's position
-	if(len == 4){
-		value += (string[0] - 48)*10;
-		value += (string[1] - 48);
-	}
-	// the NMEA string is 5 characters if the left side of the decimal place is to the 100's position
-	else if(len == 5){
-		value += (string[0] - 48)*100;
-		value += (string[1] - 48)*10;
-		value += (string[2] - 48);
-	}
-	if(lat_long == 1){
-		info->latitude_num = value;
-	}
-	else{
-		info->longitude_num = value;
-	}
-
-}*/
 

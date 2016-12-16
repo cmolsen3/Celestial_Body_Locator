@@ -1,8 +1,6 @@
 /*
  * logger.c
  *
- *  Created on: Nov 24, 2016
- *      Author: Clint Olsen
  */
 
 #define CR 0x0D //carriage return

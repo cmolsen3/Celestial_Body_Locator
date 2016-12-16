@@ -1,8 +1,6 @@
 /*
  * locator.h
  *
- *  Created on: Dec 5, 2016
- *      Author: Clint Olsen
  */
 
 #ifndef LOCATOR_H_

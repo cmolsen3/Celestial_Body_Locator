@@ -1,8 +1,6 @@
 /*
  * gps.h
  *
- *  Created on: Nov 16, 2016
- *      Author: Clint Olsen
  */
 
 #ifndef GPS_H_
